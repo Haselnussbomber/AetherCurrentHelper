@@ -39,10 +39,6 @@ public class PluginWindow : Window
 
         var AetherCurrentSheet = Service.Data.GetExcelSheet<AetherCurrent>()!;
         var EObjSheet = Service.Data.GetExcelSheet<EObj>()!;
-        var EObjNameSheet = Service.Data.GetExcelSheet<EObjName>()!;
-        var ENpcResidentSheet = Service.Data.GetExcelSheet<ENpcResident>()!;
-        var TerritoryTypeSheet = Service.Data.GetExcelSheet<TerritoryType>()!;
-        var QuestSheet = Service.Data.GetExcelSheet<Quest>()!;
         var LevelSheet = Service.Data.GetExcelSheet<Level>()!;
 
         var eobjDataDict = new Dictionary<uint, EObj>();
