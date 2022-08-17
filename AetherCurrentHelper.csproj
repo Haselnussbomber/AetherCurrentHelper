@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Platforms>x64</Platforms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\</OutputPath>
+    <AllowedReferenceRelatedFileExtensions>.pdb</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <Dalamud>$(AppData)\XIVLauncher\addon\Hooks\dev</Dalamud>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsCI)' == 'true'">
+    <Dalamud>$(HOME)/dalamud</Dalamud>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".git*" />
+  </ItemGroup>
+
+  <ItemGroup>
+		<Reference Include="Dalamud">
+			<Private>false</Private>
+			<HintPath>$(Dalamud)/Dalamud.dll</HintPath>
+		</Reference>
+		<Reference Include="FFXIVClientStructs">
+			<Private>false</Private>
+			<HintPath>$(Dalamud)/FFXIVClientStructs.dll</HintPath>
+		</Reference>
+		<Reference Include="ImGui.NET">
+			<Private>false</Private>
+			<HintPath>$(Dalamud)/ImGui.NET.dll</HintPath>
+		</Reference>
+		<Reference Include="Lumina">
+			<Private>false</Private>
+			<HintPath>$(Dalamud)/Lumina.dll</HintPath>
+		</Reference>
+		<Reference Include="Lumina.Excel">
+			<Private>false</Private>
+			<HintPath>$(Dalamud)/Lumina.Excel.dll</HintPath>
+		</Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DalamudPackager" Version="2.1.7" />
+  </ItemGroup>
+</Project>
