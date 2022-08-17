@@ -13,7 +13,7 @@ public class PluginWindow : Window
 {
     private AetherCurrentEntry[]? aetherCurrents = null;
 
-    public PluginWindow() : base("PluginWindow")
+    public PluginWindow() : base("AetherCurrentHelper")
     {
         base.Size = new Vector2(350, 450);
         base.SizeCondition = ImGuiCond.FirstUseEver;
