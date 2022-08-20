@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Dalamud.Memory;
 using Dalamud.Utility.Signatures;
 
@@ -27,13 +28,33 @@ public unsafe class GameFunctions
     private readonly FormatObjectStringDelegate FormatObjectString = null!; // how do you expect me to name things i have no clue about
     private delegate IntPtr FormatObjectStringDelegate(int mode, uint id, uint idConversionMode, uint a4);
 
+    private readonly Dictionary<uint, string> ENpcResidentNameCache = new();
     public string GetENpcResidentName(uint npcId)
     {
-        return MemoryHelper.ReadSeStringNullTerminated(FormatObjectString(0, npcId, 3, 1)).ToString();
+        if (ENpcResidentNameCache.ContainsKey(npcId))
+        {
+            return ENpcResidentNameCache[npcId];
+        }
+
+        var ret = MemoryHelper.ReadSeStringNullTerminated(FormatObjectString(0, npcId, 3, 1)).ToString();
+
+        ENpcResidentNameCache.Add(npcId, ret.ToString());
+
+        return ret;
     }
 
+    private readonly Dictionary<uint, string> EObjNameCache = new();
     public string GetEObjName(uint objId)
     {
-        return MemoryHelper.ReadSeStringNullTerminated(FormatObjectString(0, objId, 5, 1)).ToString();
+        if (EObjNameCache.ContainsKey(objId))
+        {
+            return EObjNameCache[objId];
+        }
+
+        var ret = MemoryHelper.ReadSeStringNullTerminated(FormatObjectString(0, objId, 5, 1)).ToString();
+
+        EObjNameCache.Add(objId, ret.ToString());
+
+        return ret;
     }
 }
