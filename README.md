@@ -1,5 +1,7 @@
 # Aether Current Helper
 
+### Deprecated: This Plugin is now part of [HaselTweaks](https://github.com/Haselnussbomber/HaselTweaks) and will no longer be updated.
+
 A little helper for Aether Currents.
 
 Open with `/aethercurrenthelper`, `/aethercurrents` or just `/aether`.
